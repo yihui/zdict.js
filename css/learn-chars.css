@@ -1,0 +1,22 @@
+.center { text-align: center; }
+.right { text-align: right; }
+.pinyin { font-size: 3em; }
+.py {
+  font-size: 1.5em;
+  margin-bottom: auto;
+}
+.char-box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10em;
+  border: 1px solid;
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px)),
+    repeating-linear-gradient(90deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px)),
+    repeating-linear-gradient(45deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px)),
+    repeating-linear-gradient(135deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px));
+}
