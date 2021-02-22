@@ -18,12 +18,12 @@
   }
 
   // 安插基本元素，用来存放拼音、汉字等信息
-  s.insertAdjacentHTML('afterend', '<div id="learn-chars">
-  <div class="pinyin center"></div>
-  <div class="center"><div class="char-box kai"><span class="char"></span></div></div>
-  <div class="meaning"></div>
-  <div class="source kai right"></div>
-  </div>');
+  s.insertAdjacentHTML('afterend', '<div id="learn-chars">' +
+    '<div class="pinyin center"></div>' +
+    '<div class="center"><div class="char-box kai"><span class="char"></span></div></div>' +
+    '<div class="meaning"></div>' +
+    '<div class="source kai right"></div>' +
+    '</div>');
 
   function sampleOne(x) {
     return x[Math.floor(Math.random() * x.length)];
