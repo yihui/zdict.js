@@ -5,17 +5,6 @@
     s = document.getElementsByTagName('script');
     s = s[s.length - 1];
   }
-  function insertBefore(target, sib) {
-    target.before ? target.before(sib) : (
-      target.parentNode.insertBefore(sib, target)
-    );
-  }
-  // 如果 zDict 数据还没加载，现在实时加载它
-  if (!window.zDict || !zDict.chars) {
-    var s2 = document.createElement('script');
-    s2.src = s.src.replace(/(.*\/).*/, '$1') + 'data-chars.js';
-    insertBefore(s, s2);
-  }
 
   // 安插基本元素，用来存放拼音、汉字等信息
   s.insertAdjacentHTML('afterend', '<div id="learn-chars">' +
