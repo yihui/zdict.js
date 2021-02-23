@@ -1,5 +1,13 @@
 .center { text-align: center; }
 .right { text-align: right; }
+#learn-toolbar .label {
+  margin: auto 1em auto .5em;
+  padding: .5em 1em;
+}
+#learn-toolbar input:not(:checked) + .label {
+  background: none;
+  border: 1px solid #eee;
+}
 .pinyin { font-size: 3em; }
 .py {
   font-size: 1.5em;
@@ -19,4 +27,13 @@
     repeating-linear-gradient(90deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px)),
     repeating-linear-gradient(45deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px)),
     repeating-linear-gradient(135deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px));
+}
+.review {
+  font-size: .3em;
+  display: inline-block;
+}
+.review .pinyin { font-size: 4em; }
+.current {
+  color: white;
+  background-color: black;
 }
