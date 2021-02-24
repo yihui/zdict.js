@@ -18,10 +18,10 @@ unescape_entities = function(x) {
 }
 
 # 写出数据到 JS 对象 zDict 中，例如字符写入 zDict["chars"] 里
-write_data = function(name, x) {
+write_data = function(name, x, ...) {
   res = paste0(
     sprintf('if (!window.zDict) var zDict = {}; zDict["%s"] = ', name),
-    jsonlite::toJSON(res), ';'
+    trimws(jsonlite::toJSON(x, pretty = 0, ...)), ';'
   )
   xfun::write_utf8(res, sprintf('js/data-%s.js', name))
 }
@@ -33,7 +33,8 @@ res = lapply(files, function(f) {
   x = xfun::grep_sub(r, '\\1', x)
   x = lapply(strsplit(x, '><span class="dicpy">')[[1]][-1], function(z) {
     py = xfun::grep_sub('^([^<]+)<.*', '\\1', z)  # 获取拼音
-    py = unescape_entities(trimws(py))
+    py = unescape_entities(py)
+    py = gsub('^\\s*([^[:space:]]+).*', '\\1', py)  # 去掉空格
     # 有少数条目没有 </li> 闭合标签（如媪、啻），而是继续 <li> 直到 </ol> 结束
     li = regmatches(z, gregexpr('<li>\\s*(.+?)\\s*(?=<(/li|li|/ol)>)', z, perl = TRUE))
     li = gsub('^<li>|</(li|ol)>$', '', unlist(li))
