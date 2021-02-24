@@ -54,3 +54,16 @@ res = lapply(files, function(f) {
 res = setNames(res, gsub('.*(.)[.]html', '\\1', files))
 
 write_data('chars', res)
+
+local({
+  x = trimws(xfun::read_utf8('data/freq-chars.txt'))
+  m = gregexpr(r <- '([0-9]+)\\s+(.)(\\s*.\\s*[^[:space:]]+|$)', x)
+  x = unlist(regmatches(x, m))
+  if (any(i <- format(seq_along(x), trim = TRUE) != gsub(r, '\\1', x))) stop(
+    '这些字符可能有问题：\n', paste(x[i], collapse = '\n')
+  )
+  x = gsub(r, '\\2', x)
+  x = intersect(x, names(res))
+  x = c(x, setdiff(names(res), x))
+  write_data('freqs', paste(x, collapse = ''), auto_unbox = TRUE)
+})
