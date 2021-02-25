@@ -59,7 +59,7 @@
   if (!lc.value) lc.value = zDict.freqs;
 
   // 保存学过的字，供复习用
-  var key2 = 'learned-chars', p = [0, 0, 0, 0];
+  var key2 = 'learned-chars', p = [-1, 0, -1];
   function saveChar(x, key) {
     var data = S.get(key);
     if (!data) { data = ''; } else if (data.match(x)) return;
@@ -75,7 +75,7 @@
   // 学习字库、总字库、挑战字库
   var chars = [], freqs = zDict.freqs.split(''), cChars = freqs.slice(), cCancel = true;
   function setChars() {
-    p = [0, 0, 0, 0];
+    p = [-1, 0, -1];
     chars = lc.value.split('');
     if (lc.value !== '' && lc.value !== zDict.freqs) {
       var v = [];
@@ -125,9 +125,9 @@
       switch (mode) {
         case 0:
           // 学习模式：顺序显示一字
-          char = chars[p[0]];
+          if (p[0] >= chars.length - 1) p[0] = -1;
+          char = chars[++p[0]];
           saveChar(char, key2);
-          if (p[0] >= chars.length - 1) { p[0] = 0; } else p[0]++;
           break;
 
         case 1:
@@ -146,11 +146,11 @@
 
         case 2:
           // 测验模式：依次测试全集拼音
-          if (p[2] >= chars.length) {
-            p[2] = 0;
+          if (p[2] >= chars.length - 1) {
+            p[2] = -1;
             return alert('测验结束！');
           }
-          char = chars[p[2]++];
+          char = chars[++p[2]];
           break;
 
         case 3:
