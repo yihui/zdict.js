@@ -176,7 +176,7 @@
   }
   function renderPinyin(char, zi, py, sep, num) {
     zi.innerText = char;
-    zi.nextElementSibling.innerText = num || p[mode] + 1;
+    zi.nextElementSibling.innerText = num || p[mode] + 1 || '';
     var info = zDict.chars[char], pys = Object.keys(info);
     if (mode >= 2) {
       py.dataset.pinyin = pys.join(' - '); // 将正确拼音保存在数据中
@@ -187,7 +187,8 @@
     return info;
   }
 
-  renderChar();
+ // 初始随机显示一个字
+  renderChar(sampleOne(freqs));
 
   // 戳一下换一字
   zi.parentElement.addEventListener('click', function(e) {
