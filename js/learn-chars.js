@@ -8,7 +8,8 @@
     '<div class="center" id="learn-toolbar"></div>' +
     '<div class="char-block">' +
     '<div class="pinyin center" contenteditable></div>' +
-    '<div class="center"><div class="char-box kai"><span class="char"></span></div></div>' +
+    '<div class="center"><div class="char-box kai">' +
+    '<span class="char"></span><span class="num"></span></div></div>' +
     '</div>' +
     '<div class="meaning"></div>' +
     '<p class="source kai right"></p>' +
@@ -103,7 +104,7 @@
     d.querySelectorAll('.review').forEach(removeEl);
     chars.forEach(function(char, i) {
       var nb = cb.cloneNode(true), zi = nb.querySelector('.char');
-      renderPinyin(char, zi, nb.querySelector('.pinyin'), '\n');
+      renderPinyin(char, zi, nb.querySelector('.pinyin'), '\n', i + 1);
       zi.parentElement.addEventListener('click', function(e) {
         p[1] = i;
         renderChar(char);
@@ -121,6 +122,7 @@
     if (mode >= 2) cCancel = true;
     py.setAttribute('contenteditable', true);
     cb.classList.remove('correct', 'wrong');
+    var num;  // 挑战模式下的字符编号
     if (!char) {
       switch (mode) {
         case 0:
@@ -156,12 +158,14 @@
         case 3:
           // 挑战模式：随机抽取一字测验
           char = sampleOne(cChars);
-          cChars.splice(cChars.indexOf(char), 1);
+          num = cChars.indexOf(char);
+          cChars.splice(num, 1);
+          ++num;
           break;
       }
     }
     if (mode === 1) highlightReview();
-    var info = renderPinyin(char, zi, py, ' - ');
+    var info = renderPinyin(char, zi, py, ' - ', num);
     if (!info) return;
     var me = '';
     for (var k in info) {
@@ -170,8 +174,9 @@
     mn.innerHTML = me;
     sc.innerHTML = '资料来源：汉典（<a href="https://www.zdic.net/hans/' + char + '" target="_blank">查看详情</a>）';
   }
-  function renderPinyin(char, zi, py, sep) {
+  function renderPinyin(char, zi, py, sep, num) {
     zi.innerText = char;
+    zi.nextElementSibling.innerText = num || p[mode] + 1;
     var info = zDict.chars[char], pys = Object.keys(info);
     if (mode >= 2) {
       py.dataset.pinyin = pys.join(' - '); // 将正确拼音保存在数据中
