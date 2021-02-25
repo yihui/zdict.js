@@ -30,6 +30,7 @@
   }
   // 比较原始拼音是否相同，如果不同，去掉音调之后再比较
   function checkPinyin(x1, x2) {
+    x1 = x1.toLowerCase();
     return x2.split(' - ').indexOf(x1) > -1 || noAccent(x2).split(' - ').indexOf(x1) > -1;
   }
 
