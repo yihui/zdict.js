@@ -146,9 +146,9 @@
 
         case 2:
           // 测验模式：依次测试全集拼音
-          if (p[2] >= chars.length - 1) {
+          if (p[2] >= chars.length) {
             p[2] = 0;
-            alert('测验结束！');
+            return alert('测验结束！');
           }
           char = chars[p[2]++];
           break;
