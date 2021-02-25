@@ -226,7 +226,7 @@
       cb.classList.add('correct');
       this.innerText = ans;
     } else {
-      if (mode !== 2 || v !== ' ') cb.classList.add('wrong');
+      if (mode !== 2 || !/^\s+$/.test(v)) cb.classList.add('wrong');
       if (mode === 3) nw++;
       v = v.trim();
       this.innerText = v === '' ? ans : v + ' -> ' + ans;
