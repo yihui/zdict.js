@@ -233,6 +233,10 @@
     if (checkPinyin(v.trim(), ans)) {
       cb.classList.add('correct');
       this.innerText = ans;
+      cCancel = false;
+      setTimeout(function() {
+        !cCancel && renderChar();
+      }, 2000);
     } else {
       if (mode !== 2 || !/^\s+$/.test(v)) cb.classList.add('wrong');
       if (mode === 3) nw++;
@@ -240,6 +244,7 @@
       this.innerText = v === '' ? ans : v + ' -> ' + ans;
       py.removeAttribute('contenteditable');
     };
+
     d.querySelector('input[id="mode-' + mode + '"]').focus();
     if (mode === 3) {
       var N = freqs.length, nc = N - cChars.length;  // 已挑战样本量
@@ -258,12 +263,7 @@
   py.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      cCancel = false;
-      if (mode >= 2) cb.classList.remove('correct');
       this.blur();
-      if (mode >= 2 && cb.classList.contains('correct')) setTimeout(function() {
-        !cCancel && renderChar();
-      }, 2000);
     }
   });
 
