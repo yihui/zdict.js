@@ -220,7 +220,7 @@
   // 测验
   var nw = 0;  // 挑战模式下的错字个数
   py.addEventListener('blur', function(e) {
-    if (mode < 2) return;
+    if (mode < 2 || p[2] === -1) return;
     var v = this.innerText, ans = this.dataset.pinyin;
     if (checkPinyin(v.trim(), ans)) {
       cb.classList.add('correct');
