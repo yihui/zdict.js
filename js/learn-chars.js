@@ -189,11 +189,11 @@
     renderChar();
   });
 
-  function removeEl(el) { el?.remove(); }
+  function removeEl(el) { el && el.remove(); }
 
   // 高亮学习过的字
   function highlightReview() {
-    d.querySelector('.current')?.classList.remove('current');
+    var el = d.querySelector('.current'); el && el.classList.remove('current');
     d.querySelectorAll('.review')[p[1]].querySelector('.char-box').classList.add('current');
   }
 
