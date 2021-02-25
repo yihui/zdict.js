@@ -118,6 +118,7 @@
   function renderChar(char) {
     py.innerText = zi.innerText = mn.innerText = '';
     if (mode != 3) sc.innerText = '';
+    if (mode >= 2) cCancel = true;
     py.setAttribute('contenteditable', true);
     cb.classList.remove('correct', 'wrong');
     if (!char) {
@@ -154,7 +155,6 @@
 
         case 3:
           // 挑战模式：随机抽取一字测验
-          cCancel = true;
           char = sampleOne(cChars);
           cChars.splice(cChars.indexOf(char), 1);
           break;
