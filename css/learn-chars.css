@@ -28,12 +28,57 @@
     repeating-linear-gradient(45deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px)),
     repeating-linear-gradient(135deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px));
 }
+#learn-chars .correct { color: forestgreen; }
+#learn-chars .wrong { color: orangered; }
 .review {
   font-size: .3em;
+  display: none;
+}
+.review-pane .review-show, .review-pane.review-all .review {
   display: inline-block;
+}
+.review-all .review:not(.review-show) {
+  color: #ccc;
+}
+.review-all #learn-toolbar input:checked + .label {
+  background: none;
+  border: 1px solid #000;
 }
 .review .pinyin { font-size: 4em; }
 .current {
   color: white;
   background-color: black;
+}
+#learn-candidates {
+  display: block;
+  width: 100%;
+  height: 6em;
+  padding: .2em;
+}
+#learn-settings {
+  font-size: .9em;
+}
+#learn-settings p:nth-of-type(2) {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#learn-settings input {
+  width: 4em;
+  padding: .2em;
+}
+#learn-settings button {
+  min-width: 4em;
+  padding: .1em .2em;
+}
+.seal-top {
+  border-bottom: 1px dashed;
+}
+.seal-bottom {
+  border-top: 1px dashed;
+}
+.seal-line {
+  color: #ccc;
+  text-align: center;
+  letter-spacing: 1em;
 }
