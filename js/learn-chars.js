@@ -94,10 +94,10 @@
       S.remove(key1);
     }
     if (chars.length === 0) chars = freqs;
-    var n = [];
-    ls.querySelectorAll('input[type="number"]').forEach(function(el, i) {
-      n[i] = +el.value;
-    });
+    var n = [], ns = ls.querySelectorAll('input[type="number"]'), n0 = ns[0], n1 = ns[1];
+    n[0] = +n0.value; n[1] = +n1.value;
+    if (n[0] < 1 || n[0] > chars.length) n0.value = n[0] = 1;
+    if (n[1] < 0) n1.value = n[1] = 0;
     // 特例：如果设定总共使用 0 个字符，那么选择所有字符
     if (n[1] > 0) chars = chars.slice(n[0] - 1, n[0] - 1 + n[1]);
     S.remove(key2);
