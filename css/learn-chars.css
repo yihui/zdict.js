@@ -55,7 +55,10 @@
   background: none;
   border: 1px solid #000;
 }
-.review .pinyin { font-size: 4em; }
+.review .pinyin {
+  font-size: 4em;
+  line-height: 1.2em;
+}
 .current {
   color: white;
   background-color: black;
