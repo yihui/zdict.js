@@ -5,11 +5,11 @@
 
   // 安插基本元素，用来存放拼音、汉字等信息
   s.insertAdjacentHTML('afterend', '<div id="learn-chars">' +
-    '<div class="center" id="learn-toolbar"></div>' +
+    '<div id="learn-toolbar"></div>' +
     '<div class="char-block">' +
-    '<div class="pinyin center" contenteditable></div>' +
-    '<div class="center"><div class="char-box kai">' +
-    '<span class="char"></span><span class="num"></span></div></div>' +
+    '<div class="pinyin" contenteditable></div>' +
+    '<div class="char-box kai">' +
+    '<span class="char"></span><span class="num"></span></div>' +
     '</div>' +
     '<div class="meaning"></div>' +
     '<p class="source kai right"></p>' +

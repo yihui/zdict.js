@@ -1,4 +1,4 @@
-.center { text-align: center; }
+#learn-toolbar, .char-block { text-align: center; }
 .right { text-align: right; }
 #learn-toolbar .label {
   margin: auto 1em auto .5em;
