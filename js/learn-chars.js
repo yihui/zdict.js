@@ -44,7 +44,7 @@
   ['学习', '复习', '测验', '挑战'].forEach(function(el, i) {
     tb.innerHTML += '<input name="mode" type="radio" id="mode-'+ i +
     '" ' + (i === 0 ? 'checked' : '') +
-    '/><label for="mode-' + i + '" class="label">' + el + '</label>';
+    '/><label for="mode-' + i + '" class="label">' + el + '</label> ';
   });
   var mode = 0;
 
