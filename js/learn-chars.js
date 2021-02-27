@@ -120,7 +120,7 @@
   function renderChar(char) {
     py.innerText = zi.innerText = mn.innerText = '';
     if (mode != 3) sc.innerText = '';
-    if (mode >= 2) cCancel = true;
+    if (mode >= 2) clearTimeout(cCancel);
     py.setAttribute('contenteditable', true);
     cb.classList.remove('correct', 'wrong');
     var num;  // 挑战模式下的字符编号
@@ -230,10 +230,7 @@
     if (checkPinyin(v.trim(), ans)) {
       cb.classList.add('correct');
       this.innerText = ans;
-      cCancel = false;
-      setTimeout(function() {
-        !cCancel && renderChar();
-      }, 2000);
+      cCancel = setTimeout(renderChar, 2000);
     } else {
       if (mode !== 2 || !/^\s+$/.test(v)) cb.classList.add('wrong');
       if (mode === 3) nw++;
