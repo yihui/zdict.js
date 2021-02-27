@@ -36,10 +36,7 @@
   line-height: 1em;
   opacity: .6;
 }
-#learn-chars .correct {
-  color: limegreen;
-  transition: color 1.8s;
-}
+#learn-chars .correct { color: forestgreen; }
 #learn-chars .wrong { color: orangered; }
 .review {
   font-size: .3em;
