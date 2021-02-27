@@ -110,7 +110,7 @@
         p[1] = i;
         renderChar(char);
       });
-      nb.classList.add('review'); // nb.id = 'char-' + i;
+      nb.classList.add('review');
       d.insertBefore(nb, cb);
     });
   }
@@ -216,11 +216,8 @@
     i === 1 && el.addEventListener('click', function(e) {
       d.classList.toggle('review-all');
     });
-    i >= 2 && el.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        renderChar();
-      }
+    i >= 2 && el.addEventListener('keyup', function(e) {
+      e.key === 'Enter' && renderChar();
     });
   });
 
@@ -260,11 +257,10 @@
     }
   });
   // 除了离开输入框，也可以用回车键提交答案
-  py.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      this.blur();
-    }
+  ['keypress', 'keyup'].map(function(evt) {
+    py.addEventListener(evt, function(e) {
+      e.key === 'Enter' && (e.preventDefault(), evt === 'keyup' && this.blur());
+    });
   });
 
   // 重设字库
