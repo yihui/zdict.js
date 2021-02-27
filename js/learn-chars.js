@@ -3,6 +3,9 @@
   var s = document.currentScript;
   if (!s) return alert('抱歉，本程序不支持您的古董浏览器，请尝试使用 Chrome/Firefox/Edge 等现代浏览器');
 
+  // 学习字库、总字库、挑战字库
+  var chars = [], freqs = zDict.freqs.split(''), cChars = freqs.slice();
+
   // 安插基本元素，用来存放拼音、汉字等信息
   s.insertAdjacentHTML('afterend', '<div id="learn-chars">' +
     '<div id="learn-toolbar"></div>' +
@@ -74,8 +77,6 @@
     return x ? x.split('') : [];
   }
 
-  // 学习字库、总字库、挑战字库
-  var chars = [], freqs = zDict.freqs.split(''), cChars = freqs.slice(), cCancel = true;
   function setChars() {
     p = [-1, 0, -1];
     chars = lc.value.split('');
@@ -120,7 +121,6 @@
   function renderChar(char) {
     py.innerText = zi.innerText = mn.innerText = '';
     if (mode != 3) sc.innerText = '';
-    if (mode >= 2) clearTimeout(cCancel);
     py.setAttribute('contenteditable', true);
     cb.classList.remove('correct', 'wrong');
     var num;  // 挑战模式下的字符编号
@@ -230,7 +230,6 @@
     if (checkPinyin(v.trim(), ans)) {
       cb.classList.add('correct');
       this.innerText = ans;
-      cCancel = setTimeout(renderChar, 2000);
     } else {
       if (mode !== 2 || !/^\s+$/.test(v)) cb.classList.add('wrong');
       if (mode === 3) nw++;
