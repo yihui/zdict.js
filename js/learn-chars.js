@@ -70,7 +70,6 @@
     if (!data) { data = ''; } else if (data.match(x)) return;
     data += x;
     S.set(key, data);
-    key === key2 && d.querySelectorAll('.review')[p[0]].classList.add('review-show');
   }
   function learnedChars(key) {
     var x = S.get(key);
@@ -102,18 +101,8 @@
     // 特例：如果设定总共使用 0 个字符，那么选择所有字符
     if (n[1] > 0) chars = chars.slice(n[0] - 1, n[0] - 1 + n[1]);
     S.remove(key2);
-
-    d.querySelectorAll('.review').forEach(removeEl);
-    chars.forEach(function(char, i) {
-      var nb = cb.cloneNode(true), zi = nb.querySelector('.char');
-      renderPinyin(char, zi, nb.querySelector('.pinyin'), '\n', i + 1);
-      zi.parentElement.addEventListener('click', function(e) {
-        p[1] = i;
-        renderChar(char);
-      });
-      nb.classList.add('review');
-      d.insertBefore(nb, cb);
-    });
+    d.querySelectorAll('.review').forEach(removeEl); // 重新生成复习字块
+    mode === 1 && renderReview();
   }
   setChars();
 
@@ -204,17 +193,40 @@
     d.querySelectorAll('.review')[p[1]].querySelector('.char-box').classList.add('current');
   }
 
-  // 更换模式：点击复习单选框，显示或隐藏还没学过的字
+  // 更换模式
   function modeChange(e) {
     mode = +this.id.replace('mode-', '');
     d.classList[mode === 1 ? 'add' : 'remove']('review-pane');
     d.classList.remove('review-all');
     renderChar();
   }
+  // 复习模式下把字集中的每个字都渲染出来，但默认是隐藏的
+  function renderReview() {
+    var rs = d.querySelectorAll('.review'), lChars = learnedChars(key2);
+    rs.forEach(function(el, i) {
+      i < lChars.length && el.classList.add('review-show');
+    });
+    if (rs.length >= chars.length) return;
+    var all = d.classList.contains('review-all');
+    chars.forEach(function(char, i) {
+      // 已经生成的字就表再生成了；若不显示所有的字，那么只生成学过的字
+      if (i < rs.length || (!all && i >= lChars.length)) return;
+      var nb = cb.cloneNode(true), zi = nb.querySelector('.char');
+      renderPinyin(char, zi, nb.querySelector('.pinyin'), '\n', i + 1);
+      zi.parentElement.addEventListener('click', function(e) {
+        p[1] = i;
+        renderChar(char);
+      });
+      nb.classList.add('review', all ? 'review' : 'review-show');
+      d.insertBefore(nb, cb);
+    });
+  }
   d.querySelectorAll('input[name="mode"]').forEach(function(el, i) {
     el.addEventListener('change', modeChange);
     i === 1 && el.addEventListener('click', function(e) {
-      d.classList.toggle('review-all');
+      // 点击复习单选框，显示或隐藏还没学过的字
+      mode === i && d.classList.toggle('review-all');
+      renderReview();
     });
     i >= 2 && el.addEventListener('keyup', function(e) {
       e.key === 'Enter' && renderChar();
