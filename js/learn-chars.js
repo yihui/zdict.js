@@ -108,7 +108,7 @@
 
  // 按顺序显示一字及其相关信息
   function renderChar(char) {
-    py.innerText = zi.innerText = mn.innerText = '';
+    py.innerText = zi.innerText = mn.innerText = zi.nextElementSibling.innerText = '';
     if (mode != 3) sc.innerText = '';
     py.setAttribute('contenteditable', true);
     cb.classList.remove('correct', 'wrong');
@@ -148,14 +148,12 @@
         case 3:
           // 挑战模式：随机抽取一字测验
           char = sampleOne(cChars);
-          num = cChars.indexOf(char);
-          cChars.splice(num, 1);
-          ++num;
+          cChars.splice(cChars.indexOf(char), 1);
           break;
       }
     }
     if (mode === 1) highlightReview();
-    var info = renderPinyin(char, zi, py, ' - ', num);
+    var info = renderPinyin(char, zi, py, ' - ');
     if (!info) return;
     var me = '';
     for (var k in info) {
@@ -164,9 +162,9 @@
     mn.innerHTML = me;
     sc.innerHTML = '资料来源：汉典（<a href="https://www.zdic.net/hans/' + char + '" target="_blank">查看详情</a>）';
   }
-  function renderPinyin(char, zi, py, sep, num) {
+  function renderPinyin(char, zi, py, sep) {
     zi.innerText = char;
-    zi.nextElementSibling.innerText = num || p[mode] + 1 || '';
+    zi.nextElementSibling.innerText = freqs.indexOf(char) + 1;
     var info = zDict.chars[char], pys = Object.keys(info);
     if (mode >= 2) {
       py.dataset.pinyin = pys.join(' - '); // 将正确拼音保存在数据中
@@ -212,7 +210,7 @@
       // 已经生成的字就表再生成了；若不显示所有的字，那么只生成学过的字
       if (i < rs.length || (!all && i >= lChars.length)) return;
       var nb = cb.cloneNode(true), zi = nb.querySelector('.char');
-      renderPinyin(char, zi, nb.querySelector('.pinyin'), '\n', i + 1);
+      renderPinyin(char, zi, nb.querySelector('.pinyin'), '\n');
       zi.parentElement.addEventListener('click', function(e) {
         p[1] = i;
         renderChar(char);
