@@ -39,7 +39,7 @@
 
   var d = document.getElementById('learn-chars'),
       tb = d.querySelector('#learn-toolbar'), cb = d.querySelector('.char-block'),
-      py = d.querySelector('.pinyin'), zi = d.querySelector('.char'),
+      py = cb.querySelector('.pinyin'), zi = cb.querySelector('.char'),
       mn = d.querySelector('.meaning'), sc = d.querySelector('.source'),
       ls = d.querySelector('#learn-settings'), lc = ls.querySelector('#learn-candidates');
 
