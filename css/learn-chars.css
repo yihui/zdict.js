@@ -28,6 +28,7 @@
     repeating-linear-gradient(45deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px)),
     repeating-linear-gradient(135deg, transparent, transparent calc(50% - .5px), lightgray calc(50% - .5px), lightgray calc(50% + .5px));
   position: relative;
+  line-height: 1em;
 }
 .char-box > .char + span {
   position: absolute;
