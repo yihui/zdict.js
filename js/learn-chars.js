@@ -137,7 +137,7 @@
           // 复习模式：显示学习过的字
           var lChars = learnedChars(key2);
           if (lChars.length === 0) {
-            mn.innerText = '学习记录都没得，复习个锤子哦';
+            py.innerHTML = '<p style="font-size: .5em;">学习记录都没得，复习个锤子哦</p>';
             return;
           }
           // 从全集中寻找下一个历史记录中的字
