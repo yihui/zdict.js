@@ -169,6 +169,9 @@
     if (mode >= 2) {
       py.dataset.pinyin = pys.join(' - '); // 将正确拼音保存在数据中
       py.focus();
+      // 如果拼音框在视窗外，则自动将它滚到视窗内
+      var rect = py.getBoundingClientRect();
+      if (rect.top < 0 || rect.bottom > window.innerHeight) py.scrollIntoView();
       return;
     }
     py.innerText = pys.join(sep);
