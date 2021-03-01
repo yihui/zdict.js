@@ -7,7 +7,8 @@
   var chars = [], freqs = zDict.freqs.split(''), cChars = freqs.slice();
 
   // 安插基本元素，用来存放拼音、汉字等信息
-  s.insertAdjacentHTML('afterend', '<div id="learn-chars">' +
+  document.querySelector('#learn-chars') || s.insertAdjacentHTML('afterend',
+    '<div id="learn-chars">' +
     '<div id="learn-toolbar"></div>' +
     '<div class="char-block">' +
     '<div class="pinyin" contenteditable></div>' +
@@ -44,7 +45,7 @@
       ls = d.querySelector('#learn-settings'), lc = ls.querySelector('#learn-candidates');
 
   // 几种使用模式的单选框
-  ['学习', '复习', '测验', '挑战'].forEach(function(el, i) {
+  tb.innerHTML || ['学习', '复习', '测验', '挑战'].forEach(function(el, i) {
     tb.innerHTML += '<input name="mode" type="radio" id="mode-'+ i +
     '" ' + (i === 0 ? 'checked' : '') +
     '/><label for="mode-' + i + '" class="label">' + el + '</label> ';
