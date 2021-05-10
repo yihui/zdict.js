@@ -37,7 +37,7 @@
   line-height: 1em;
   opacity: .6;
 }
-#learn-chars .correct { color: forestgreen; }
+#learn-chars .correct, .review-all .review:not(.review-show) { color: forestgreen; }
 #learn-chars .wrong { color: orangered; }
 .review {
   font-size: .3em;
@@ -45,9 +45,6 @@
 }
 .review-pane .review-show, .review-pane.review-all .review {
   display: inline-block;
-}
-.review-all .review:not(.review-show) {
-  color: #ccc;
 }
 .review-all #learn-toolbar input:checked + .label {
   background: none;
