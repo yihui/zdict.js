@@ -19,8 +19,9 @@
     '<p class="source kai right"></p>' +
     '<div id="learn-settings"><p class="seal-line seal-top">密封线内不要答题</p>' +
     '<textarea id="learn-candidates"></textarea>' +
-    '<p><span><span>设定字符范围：从第</span> <input type="number" value="1" min="1"> ' +
-    '<span>字开始向后选取</span> <input type="number" value="20" min="0" step="10"> <span>字</span></span> ' +
+    '<p><span><span>字符范围：从第</span> <input type="number" value="1" min="1"> ' +
+    '<span>字开始向后选取</span> <input type="number" value="20" min="0" step="10"> ' +
+    '<span>字；韵母（可选）：<input type="text" class="yunmu"></span></span> ' +
     '<button type="button" id="learn-set">确定</button></p>' +
     '<p class="seal-line seal-bottom">密封线内不要答题</p>' +
     '</div>');
@@ -95,6 +96,11 @@
       S.remove(key1);
     }
     if (chars.length === 0) chars = freqs;
+    var ym = ls.querySelector('input.yunmu').value;
+    if (ym) chars = chars.filter(function(char) {
+      var info = zDict.chars[char];
+      return (noAccent(Object.keys(info).join(',')) + ',').match(ym + ',');
+    });
     var n = [], ns = ls.querySelectorAll('input[type="number"]'), n0 = ns[0], n1 = ns[1];
     n[0] = +n0.value; n[1] = +n1.value;
     if (n[0] < 1 || n[0] > chars.length) n0.value = n[0] = 1;
