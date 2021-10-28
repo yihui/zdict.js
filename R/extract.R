@@ -17,10 +17,10 @@ unescape_entities = function(x) {
   x
 }
 
-# 写出数据到 JS 对象 zDict 中，例如字符写入 zDict["chars"] 里
+# 用 export 输出数据
 write_data = function(name, x, ...) {
   res = paste0(
-    sprintf('if (!window.zDict) var zDict = {}; zDict["%s"] = ', name),
+    'export default ',
     trimws(jsonlite::toJSON(x, pretty = 0, ...)), ';'
   )
   xfun::write_utf8(res, sprintf('js/data-%s.js', name))

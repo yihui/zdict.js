@@ -1,4 +1,4 @@
-if (!window.zDict) var zDict = {}; zDict["chars"] = {
+export default {
 "一": {
 "yī": [
 "数名，最小的正整数（在钞票和单据上常用大写“壹”代）。",
