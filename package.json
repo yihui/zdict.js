@@ -1,0 +1,24 @@
+{
+  "name": "@xiee/zdict",
+  "version": "1.0.0",
+  "description": "汉典网站数据（通用汉字、拼音、释义等）",
+  "main": "js/zdict.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yihui/zdict.js.git"
+  },
+  "keywords": [
+    "chinese characters",
+    "zdic.net",
+    "pinyin"
+  ],
+  "author": "Yihui Xie <xie@yihui.name> (https://yihui.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yihui/zdict.js/issues"
+  },
+  "homepage": "https://github.com/yihui/zdict.js#readme"
+}
