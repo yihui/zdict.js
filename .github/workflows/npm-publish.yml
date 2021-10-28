@@ -12,13 +12,15 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: |
           npm install --global rollup
+          mkdir dist
           cd js
-          rollup zdict.js --format umd --name zDict --file zdict2.js
-          mv zdict2.js zdict.js
-          # rollup data-chars.js --format cjs --file data-chars2.js
-          # rollup data-freqs.js --format cjs --file data-freqs2.js
+          rollup zdict.js --format umd --name zDict --file ../dist/zdict.js
+          rollup learn-chars.js --format iife --file ../dist/learn-chars.js
+          # rollup data-chars.js --format cjs --file ../dist/data-chars.js
+          # rollup data-freqs.js --format cjs --file ../dist/data-freqs.js
           cd ..
-          rm -r R/ data/ *.Rproj
+          rm -r js/ R/ data/ *.Rproj
+          mv dist js
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
