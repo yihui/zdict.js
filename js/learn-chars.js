@@ -1,15 +1,18 @@
 (function() {
-  // 祝 IE 垃圾早日灭亡
-  var s = document.currentScript;
-  if (!s) return alert('抱歉，本程序不支持您的古董浏览器，请尝试使用 Chrome/Firefox/Edge 等现代浏览器');
+  let d = document.getElementById('learn-chars');
+  if (!d) {
+    const s = document.currentScript;
+    if (!s) return alert('抱歉，本程序不支持您的古董浏览器，请尝试使用 Chrome/Firefox/Edge 等现代浏览器');
+    d = document.createElement('div');
+    d.id = "learn-chars";
+    s.after(d);
+  }
 
   // 学习字库、总字库、挑战字库
   var chars = [], freqs = zDict.freqs.split(''), cChars = freqs.slice();
 
   // 安插基本元素，用来存放拼音、汉字等信息
-  document.querySelector('#learn-chars') || s.insertAdjacentHTML('afterend',
-    '<div id="learn-chars">' +
-    '<div id="learn-toolbar"></div>' +
+  if (d.childElementCount === 0) d.innerHTML = '<div id="learn-toolbar"></div>' +
     '<div class="char-block">' +
     '<div class="pinyin" contenteditable></div>' +
     '<div class="char-box kai">' +
@@ -23,8 +26,7 @@
     '<span>字开始向后选取</span> <input type="number" value="20" min="0" step="10"> ' +
     '<span>字；韵母（可选）：<input type="text" class="yunmu"></span></span> ' +
     '<button type="button" id="learn-set">确定</button></p>' +
-    '<p class="seal-line seal-bottom">密封线内不要答题</p>' +
-    '</div>');
+    '<p class="seal-line seal-bottom">密封线内不要答题</p>';
 
   function sampleOne(x) {
     return x[Math.floor(Math.random() * x.length)];
@@ -39,8 +41,7 @@
     return x2.split(' - ').indexOf(x1) > -1 || noAccent(x2).split(' - ').indexOf(x1) > -1;
   }
 
-  var d = document.getElementById('learn-chars'),
-      tb = d.querySelector('#learn-toolbar'), cb = d.querySelector('.char-block'),
+  var tb = d.querySelector('#learn-toolbar'), cb = d.querySelector('.char-block'),
       py = cb.querySelector('.pinyin'), zi = cb.querySelector('.char'),
       mn = d.querySelector('.meaning'), sc = d.querySelector('.source'),
       ls = d.querySelector('#learn-settings'), lc = ls.querySelector('#learn-candidates');
