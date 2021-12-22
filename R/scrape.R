@@ -15,7 +15,7 @@ if (any(i <- duplicated(res[, 1]))) {
   stop('抓取的汉字中有重复字符：', paste(res[i, 1], collapse = '、'))
 }
 n = NROW(res)
-for (i in 6129:n) {
+for (i in seq_len(n)) {
   message(i, '/', n)
   char = res[i, 1]
   xfun::download_file(paste0('https://www.zdic.net/hans/', char), file.path('html', paste0(char, '.html')))
