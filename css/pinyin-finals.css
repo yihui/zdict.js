@@ -1,0 +1,63 @@
+.char-block, .toc-finals {
+  display: inline-block;
+  text-align: center;
+  margin: 2px;
+}
+.toc-finals {
+  margin: 0 .2em;
+}
+.char-box {
+  font-size: 1.2em;
+}
+.char-box a {
+  color: inherit;
+  border: none;
+}
+.pinyin {
+  font-size: .8em;
+  border-bottom: 1px dotted;
+}
+.char-block {
+  width: 1.5em;
+}
+.char-width-4 {
+  width: 1.8em;
+}
+.char-width-5 {
+  width: 2.3em;
+}
+.char-width-6 {
+  width: 2.7em;
+}
+.char-accent-1, .char-accent-2 {
+  border: 1px solid;
+}
+.char-accent-2 {
+  border-style: dashed;
+}
+.char-accent-3 {
+  background: #393E46;
+}
+.char-accent-4 {
+  background: #716e77;
+}
+.char-accent-3, .char-accent-4 {
+  color: white;
+}
+.accent-legend {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.accent-clicked {
+  color: red;
+}
+.char-section {
+  margin-bottom: 2em;
+}
+.char-section[class*=accent-show] .char-block {
+  display: none;
+}
+.char-section.accent-show-0 .char-accent-0, .char-section.accent-show-1 .char-accent-1, .char-section.accent-show-2 .char-accent-2, .char-section.accent-show-3 .char-accent-3, .char-section.accent-show-4 .char-accent-4 {
+  display: inline-block;
+}
+
