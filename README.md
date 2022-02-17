@@ -9,6 +9,7 @@
     文件中。抓这些数据的初衷是为了[辅助小朋友识字](https://yihui.org/cn/kids/2021/02/chars/)。
 -   汉字频度表
     [js/data-freqs.js](js/data-freqs.js)（[数据来源](https://web.archive.org/web/20120711003705/http://onlinechinese2u.com/blog/wp-content/uploads/2012/04/LEGOO-MANDARIN-%E6%B1%89%E5%AD%97%E9%A2%91%E5%BA%A6%E8%A1%A8%E7%BB%9F%E8%AE%A1.pdf)）
+-   拼音数据 [js/data-pinyin.js](js/data-pinyin.js)
 
 ## 中文识字应用
 
@@ -51,6 +52,18 @@ zDict.freqs;
 zDict.chars['一'];
 zDict.freqs;
 </script>
+```
+
+## 韵母分组字表
+
+HTML 页面上创建一个 `id` 为 `pinyin-finals` 的容器，然后即可结合 JS 和 CSS
+生成一个按韵母分组的字表。参见这里的[示例页面](https://yihui.org/cn/kids/2022/02/finals/)。
+
+``` html
+<div id="pinyin-finals"></div>
+
+<link href="https://cdn.jsdelivr.net/npm/@xiee/zdict/css/pinyin-finals.min.css" rel="stylesheet"></link>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/zdict/js/pinyin-finals.min.js" defer></script>
 ```
 
 注意本库中的 JS 源代码是以 JS 模块的方式写的，在发布到 NPM 之前上经过了
