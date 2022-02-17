@@ -22,7 +22,7 @@ let k1, k2, x = {}, r = /^([zcs]h|[bpmfdtlngkhjqxzcsryw])/;
   'a', 'ia', 'ua', 'o', 'uo', 'e', 'i', 'u', 'ü',
   'an', 'ian', 'uan', 'üan', 'en', 'in', 'un', 'ün',
   'ai', 'uai', 'ao', 'iao', 'ei', 'ui', 'ou', 'iu', 'er', 'ie',
-  'ang', 'iang', 'uang', 'eng', 'ing', 'ong', 'iong'
+  'ang', 'iang', 'uang', 'eng', 'ing', 'ong', 'iong', 'üe'
 ].forEach(i => {
   x[i] = [];
 });
@@ -39,7 +39,7 @@ freqs.split('').slice(0, 6000).forEach(i => {
     if (k2 === 'an' && /^y/.test(j)) k2 = 'ian';
     if (k2 === 'i') {
       if (/^[zcs]/.test(j)) k2 = 'z';
-      if (/^[zcs]h/.test(j)) k2 = 'r';
+      if (/^(r|[zcs]h)/.test(j)) k2 = 'r';
     }
     if (!x[k2]) x[k2] = [];
     let a = 0;
