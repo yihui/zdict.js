@@ -8,6 +8,8 @@
 }
 .char-box {
   font-size: 1.2em;
+  border: 1px solid;
+  border-top: none;
 }
 .char-box a {
   color: inherit;
@@ -29,27 +31,28 @@
 .char-width-6 {
   width: 2.7em;
 }
-.char-accent-1, .char-accent-2 {
+.char-accent-1 .pinyin, .char-accent-2 .pinyin {
   border: 1px solid;
 }
-.char-accent-2 {
+.char-accent-2 .pinyin {
   border-style: dashed;
 }
-.char-accent-3 {
+.char-accent-3 .pinyin {
   background: #393E46;
 }
-.char-accent-4 {
+.char-accent-4 .pinyin {
   background: #716e77;
 }
-.char-accent-3, .char-accent-4 {
+.char-accent-3 .pinyin, .char-accent-4 .pinyin {
   color: white;
 }
 .accent-legend {
   font-size: 1.5em;
   cursor: pointer;
+  border-bottom: 5px solid transparent;
 }
-.accent-clicked {
-  color: red;
+.accent-clicked, .accent-legend:hover {
+  border-bottom-color: red;
 }
 .char-section {
   margin-bottom: 2em;

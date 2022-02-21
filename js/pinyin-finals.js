@@ -60,7 +60,8 @@ Object.keys(x).forEach(el => {
 h += '</nav><div style="text-align: center; margin-top: 1em;">';
 
 'aāáǎà'.split('').forEach(function(a, i) {
-  h += '<div class="char-block accent-legend char-accent-' + i + '">' + a + '</div>';
+  h += '<div class="char-block accent-legend char-accent-' + i +
+    '"><div class="pinyin">' + a + '</div></div>';
 });
 
 h += '</div><div class="char-section">';
