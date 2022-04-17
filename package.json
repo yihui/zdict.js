@@ -1,6 +1,6 @@
 {
   "name": "@xiee/zdict",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "汉典网站数据（通用汉字、拼音、释义等）",
   "main": "js/zdict.js",
   "scripts": {
