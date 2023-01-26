@@ -21,8 +21,8 @@ let k1, k2, x = {}, r = /^([zcs]h|[bpmfdtlngkhjqxzcsryw])/;
 [
   'a', 'ia', 'ua', 'o', 'uo', 'e', 'i', 'u', 'ü',
   'an', 'ian', 'uan', 'üan', 'en', 'in', 'un', 'ün',
-  'ai', 'uai', 'ao', 'iao', 'ei', 'ui', 'ou', 'iu', 'er', 'ie',
-  'ang', 'iang', 'uang', 'eng', 'ing', 'ong', 'iong', 'üe'
+  'ai', 'uai', 'ao', 'iao', 'ei', 'ui', 'ou', 'iu', 'er', 'ie', 'üe',
+  'ang', 'iang', 'uang', 'eng', 'ing', 'ong', 'iong'
 ].forEach(i => {
   x[i] = [];
 });
