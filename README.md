@@ -20,7 +20,7 @@ CSS，即可生成一个中文识字应用界面。若页面内不存在这个�
 ``` html
 <div id="learn-chars"></div>
 
-<link href="https://cdn.jsdelivr.net/npm/@xiee/zdict/css/learn-chars.min.css" rel="stylesheet"></link>
+<link href="https://cdn.jsdelivr.net/npm/@xiee/zdict/css/learn-chars.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@xiee/zdict/js/learn-chars.min.js" defer></script>
 ```
 
@@ -62,7 +62,7 @@ HTML 页面上创建一个 `id` 为 `pinyin-finals` 的容器，然后即可结�
 ``` html
 <div id="pinyin-finals"></div>
 
-<link href="https://cdn.jsdelivr.net/npm/@xiee/zdict/css/pinyin-finals.min.css" rel="stylesheet"></link>
+<link href="https://cdn.jsdelivr.net/npm/@xiee/zdict/css/pinyin-finals.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@xiee/zdict/js/pinyin-finals.min.js" defer></script>
 ```
 
