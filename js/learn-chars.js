@@ -165,11 +165,7 @@ function renderChar(char) {
   if (mode === 1) highlightReview();
   var info = renderPinyin(char, zi, py, ' - ');
   if (!info) return;
-  var me = '';
-  for (var k in info) {
-    me += '<p class="py">' + k + '</p><ol><li>' + info[k].join('</li><li>') + '</li></ol>';
-  };
-  mn.innerHTML = me;
+  renderMeaning(info);
   sc.innerHTML = '资料来源：汉典（<a href="https://www.zdic.net/hans/' + char + '" target="_blank">查看详情</a>）';
 }
 function renderPinyin(char, zi, py, sep) {
@@ -186,6 +182,13 @@ function renderPinyin(char, zi, py, sep) {
   }
   py.innerText = pys.join(sep);
   return info;
+}
+function renderMeaning(info) {
+  let me = '';
+  for (let k in info) {
+    me += `<p class="py">${k}</p><ol><li>${info[k].join('</li><li>')}</li></ol>`;
+  };
+  mn.innerHTML = me;
 }
 
 // 初始随机显示一个字
@@ -263,6 +266,7 @@ py.addEventListener('blur', function(e) {
 
   d.querySelector('input[id="mode-' + mode + '"]').focus();
   if (mode === 3) {
+    renderMeaning(zDict.chars[zi.innerText]);
     var N = freqs.length, nc = N - cChars.length;  // 已挑战样本量
     if (nc >= 2) {
       var m = 1 - nw/nc, s = 1.96 * Math.sqrt(N * (N - nc) / (nc - 1) * m * (1 - m));
