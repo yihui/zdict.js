@@ -11,7 +11,7 @@
   border: 1px solid;
   border-top: none;
 }
-.char-box a {
+#pinyin-finals .char-box a {
   color: inherit;
   border: none;
 }
